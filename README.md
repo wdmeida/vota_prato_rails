@@ -1,0 +1,1 @@
+# vota_prato_rails
