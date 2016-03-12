@@ -14,3 +14,9 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym 'RESTful'
 # end
+
+#Define as palavras que devem ser pluralizadas de forma diferente do padrão do Rails (inglês).
+ActiveSupport::Inflector.inflections do |inflect|
+	inflect.irregular 'receita', 'receitas'
+	inflect.irregular 'qualificacao', 'qualificacoes'
+end
