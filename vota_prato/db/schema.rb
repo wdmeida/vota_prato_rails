@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160312204135) do
+ActiveRecord::Schema.define(version: 20160314184735) do
 
   create_table "clientes", force: true do |t|
     t.string   "nome",       limit: 80
@@ -45,6 +45,13 @@ ActiveRecord::Schema.define(version: 20160312204135) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "especialidade", limit: 40
+  end
+
+  create_table "testes", force: true do |t|
+    t.string   "nome"
+    t.string   "endereco"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
