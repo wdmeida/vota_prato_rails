@@ -1,5 +1,9 @@
 #coding: utf-8
 class Restaurante < ActiveRecord::Base
+	#Adiciona os relacionamentos um para muitos e muitos para muitos respectivamente.
+	has_many :qualificacoes
+	has_and_belongs_to_many :pratos
+
 	#Verifica se os campos foram preenchidos.
 	validates_presence_of :nome, message: "deve ser preenchido"
 	validates_presence_of :endereco, message: "deve ser preenchido"

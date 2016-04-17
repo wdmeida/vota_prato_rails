@@ -1,5 +1,8 @@
 #coding: utf-8
 class Cliente < ActiveRecord::Base
+	#Adiciona o relacionamento um para muitos.
+	has_many :qualificacoes
+
 	#Verifica se o campo está vazio.
 	validates_presence_of :nome, message: " - deve ser preenchido"
 
