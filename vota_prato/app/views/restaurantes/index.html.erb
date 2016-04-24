@@ -17,6 +17,12 @@
 			<td><%= restaurante.nome %></td>
 			<td><%= restaurante.endereco %></td>
 			<td><%= restaurante.especialidade %></td>
+			<td>
+				<%= link_to 'Mostrar', action: 'show', id: restaurante %>
+			</td>
+			<td>
+				<%= link_to 'Deletar', {action: 'destroy', id: restaurante},{method: "delete"} %>
+			</td>
 		</tr>
 		<% end %>
 	</tbody>
