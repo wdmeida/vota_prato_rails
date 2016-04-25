@@ -16,11 +16,21 @@ class RestaurantesController < ApplicationController
 		redirect_to(action: "show", id: @restaurante)
 	end
 
-
 	#Exibe as informaçoes de um restaurante especifico atraves do id do mesmo.
 	def show
 		@restaurante = Restaurante.find(params[:id])
 	end
+
+	def edit
+		@restaurante = Restaurante.find params[:id]
+	end
+
+	def update
+		@restaurante = Restaurante.find params[:id]
+		@restaurante.update_attributes restaurante_params
+
+		redirect_to action: "show", id: @restaurante
+	end 
 
 	#Apaga um restaurante especifico atraves do id do mesmo
 	def destroy
