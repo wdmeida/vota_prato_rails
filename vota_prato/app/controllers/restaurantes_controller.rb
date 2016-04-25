@@ -4,6 +4,19 @@ class RestaurantesController < ApplicationController
 		@restaurantes = Restaurante.order :nome
 	end
 
+	#Exibe o formulario para inserçao de um novo restaurante
+	def new
+		@restaurante = Restaurante.new
+	end
+
+	#Persiste as informaçoes de um novo restaurante no banco.
+	def create
+		@restaurante = Restaurante.new(restaurante_params)
+		@restaurante.save
+		redirect_to(action: "show", id: @restaurante)
+	end
+
+
 	#Exibe as informaçoes de um restaurante especifico atraves do id do mesmo.
 	def show
 		@restaurante = Restaurante.find(params[:id])
@@ -15,5 +28,10 @@ class RestaurantesController < ApplicationController
 		@restaurante.destroy
 
 		redirect_to(action: "index")
+	end
+
+	#Efetua a solicitaçao para atribuiçao das propriedades de um restaurante.
+	def restaurante_params
+		params.require(:restaurante).permit(:nome, :endereco, :especialidade)
 	end
 end
