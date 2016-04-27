@@ -11,9 +11,12 @@ class RestaurantesController < ApplicationController
 
 	#Persiste as informaçoes de um novo restaurante no banco.
 	def create
-		@restaurante = Restaurante.new(restaurante_params)
-		@restaurante.save
-		redirect_to(action: "show", id: @restaurante)
+		@restaurante = Restaurante.new restaurante_params
+		if @restaurante.save
+			redirect_to(action: "show", id: @restaurante)
+		else
+			render action: "new"
+		end
 	end
 
 	#Exibe as informaçoes de um restaurante especifico atraves do id do mesmo.
@@ -27,9 +30,11 @@ class RestaurantesController < ApplicationController
 
 	def update
 		@restaurante = Restaurante.find params[:id]
-		@restaurante.update_attributes restaurante_params
-
-		redirect_to action: "show", id: @restaurante
+		if @restaurante.update_attributes restaurante_params
+			redirect_to action: "show", id: @restaurante
+		else
+			render action: "edit"
+		end
 	end 
 
 	#Apaga um restaurante especifico atraves do id do mesmo
