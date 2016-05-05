@@ -15,13 +15,26 @@ class QualificacoesController < ApplicationController
   # GET /qualificacoes/new
   def new
     preparar_form
-
     @qualificacao = Qualificacao.new
+  
+    if params[:cliente]
+      @qualificacao.cliente = Cliente.find(params[:cliente])
+    end
+    if params[:restaurante]
+      @qualificacao.restaurante = Restaurante.find(params[:restaurante])
+    end
+
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @qualificacao }
+      format.json { render :json => @qualificacao }
+    end
   end
 
   # GET /qualificacoes/1/edit
   def edit
     preparar_form
+    @qualificacao = Qualificacao.find(params[:id])
   end
 
   # POST /qualificacoes
