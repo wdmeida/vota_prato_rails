@@ -1,14 +1,13 @@
 class RestaurantesController < ApplicationController
+	
+	respond_to :html, :xml, :json
+
 	#Obtem os dados de todos os restaurantes cadastrados.
 	def index
 		@restaurantes = Restaurante.order :nome
 
 		#Define de forma explicita os formatos de resposta da action.
-		respond_to do |format|
-			format.html
-			format.xml {render xml: @restaurantes}
-			format.json {render json: @restaurantes}
-		end 
+		respond_with @restaurantes
 	end
 
 	#Exibe o formulario para inserçao de um novo restaurante
@@ -30,11 +29,7 @@ class RestaurantesController < ApplicationController
 	def show
 		@restaurante = Restaurante.find(params[:id])
 		
-		respond_to do |format|
-			format.html
-			format.json {render json: @restaurante}
-			format.xml {render xml: @restaurante}
-		end
+		respond_with @restaurante
 	end
 
 	def edit

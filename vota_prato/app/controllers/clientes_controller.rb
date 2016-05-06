@@ -1,24 +1,34 @@
 class ClientesController < ApplicationController
   before_action :set_cliente, only: [:show, :edit, :update, :destroy]
 
+  respond_to :html, :xml, :json
+
   # GET /clientes
   # GET /clientes.json
   def index
     @clientes = Cliente.all
+
+    respond_with @clientes
   end
 
   # GET /clientes/1
   # GET /clientes/1.json
   def show
+    @cliente = Cliente.find(params[:id])
+
+    respond_with @cliente
   end
 
   # GET /clientes/new
   def new
     @cliente = Cliente.new
+
+    respond_with @cliente
   end
 
   # GET /clientes/1/edit
   def edit
+    @cliente = Cliente.find(params[:id])
   end
 
   # POST /clientes
