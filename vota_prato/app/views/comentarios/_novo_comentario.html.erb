@@ -1,0 +1,10 @@
+<!-- Define o partial com a estrutura que sera utilizada no form generico. -->
+<%= form_for Comentario.new do |f| %>
+	<%= f.hidden_field :comentavel_id, value: comentavel.id %>
+	<%= f.hidden_field :comentavel_type, value: comentavel.class %>
+
+	<%= f.label :conteudo %><br/>
+	<%= f.text_area :conteudo %>
+
+	<%= f.submit %>
+<% end %>
