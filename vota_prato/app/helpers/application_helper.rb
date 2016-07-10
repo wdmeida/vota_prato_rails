@@ -17,4 +17,9 @@ module ApplicationHelper
 		render partial: "comentarios/comentarios",
 			locals: {comentarios: comentavel.comentarios}
 	end
+
+	#Renderiza o partial do menu principal.
+	def menu_principal(controllers)
+		render partial: "layouts/menu_principal", locals: {opcoes: controllers}
+	end
 end
