@@ -53,6 +53,17 @@ class RestaurantesController < ApplicationController
 		redirect_to(action: "index")
 	end
 
+	#Busca um restaurante atraves do seu nome.
+	def busca
+		@restaurante = Restaurante.find_by_nome(params[:nome])
+		if @restaurante
+			redirect_to :action => "show", :id => @restaurante.id
+		else
+			flash[:notice] = "Restaurante nao encontrado."
+			redirect_to :action => "index"
+		end
+	end
+
 	#Efetua a solicitaçao para atribuiçao das propriedades de um restaurante.
 	def restaurante_params
 		params.require(:restaurante).permit(:nome, :endereco, :especialidade, :foto)
