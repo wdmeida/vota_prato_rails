@@ -11,4 +11,10 @@ module ApplicationHelper
 		render partial: "comentarios/novo_comentario",
 				locals: {comentavel: comentavel}
 	end
+
+	#Renderiza o partial da listagem de comentarios.
+	def comentarios(comentavel)
+		render partial: "comentarios/comentarios",
+			locals: {comentarios: comentavel.comentarios}
+	end
 end
