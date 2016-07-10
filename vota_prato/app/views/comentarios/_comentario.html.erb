@@ -2,3 +2,8 @@
 	<%= comentario.conteudo %>
 	<%= link_to '(remover)', comentario, method: :delete %>
 </p>
+
+<!-- Importa o arquivo com o css apenas no partial de listagem de comentarios. -->
+<% content_for :css do %>
+	<link rel="stylesheet" href="/stylesheets/comentarios.css">
+<% end %>
