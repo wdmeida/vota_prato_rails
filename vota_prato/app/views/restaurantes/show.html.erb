@@ -30,6 +30,10 @@
 	<%= comentarios @restaurante %>
 	<%= novo_comentario @restaurante %>
 </p>
+<p>
+	<b>Foto:</b>
+	<%= image_tag @restaurante.foto.url(:thumb) %>
+</p>
 <br>
 <br>
 <%= link_to 'Editar', action: 'edit', id: @restaurante %> | 

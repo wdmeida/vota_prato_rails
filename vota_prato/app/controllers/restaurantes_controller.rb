@@ -4,7 +4,7 @@ class RestaurantesController < ApplicationController
 
 	#Obtem os dados de todos os restaurantes cadastrados.
 	def index
-		@restaurantes = Restaurante.order :nome
+		@restaurantes = Restaurante.order(:nome).page(params['page']).per(3) 
 
 		#Define de forma explicita os formatos de resposta da action.
 		respond_with @restaurantes
@@ -17,7 +17,7 @@ class RestaurantesController < ApplicationController
 
 	#Persiste as informaçoes de um novo restaurante no banco.
 	def create
-		@restaurante = Restaurante.new restaurante_params
+		@restaurante = Restaurante.new(restaurante_params)
 		if @restaurante.save
 			redirect_to(action: "show", id: @restaurante)
 		else
@@ -55,6 +55,6 @@ class RestaurantesController < ApplicationController
 
 	#Efetua a solicitaçao para atribuiçao das propriedades de um restaurante.
 	def restaurante_params
-		params.require(:restaurante).permit(:nome, :endereco, :especialidade)
+		params.require(:restaurante).permit(:nome, :endereco, :especialidade, :foto)
 	end
 end
