@@ -65,4 +65,8 @@ VotaPrato::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  #match 'rack',
+  #  :to => proc{|env| [200, {"Content-Type" => "text/html"},
+  #            ["App Rack numa rota Rails"]]}
 end
